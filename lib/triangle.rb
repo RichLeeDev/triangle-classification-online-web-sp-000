@@ -32,11 +32,11 @@ class Triangle
   end
 
   def scalene?
-    (@side1 != @side2) && (@side1!= @side3) && (@side2 != @side3)
+    (@side1 != @side2) && (@side1 != @side3) && (@side2 != @side3)
   end
 
   def isosceles?
-    (@side2 == @side3) || (@side1 == @side2) || (@side1 = @side3)
+    (@side2 == @side3) || (@side1 == @side2) || (@side1 == @side3)
   end
 
   def valid?
