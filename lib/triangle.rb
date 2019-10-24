@@ -1,26 +1,52 @@
 class Triangle
-  attr_reader :a, :b, :c
-  def initialize(a, b, c)
-    @a = a
-    @b = b
-    @c = c
+  # write code here	  # write code here
+end 	
+  attr_accessor :side1, :side2, :side3
+  @sides = []
+
+  def initialize(side1, side2, side3)
+    @side1, @side2, @side3 = side1, side2, side3
+    @sides = [side1, side2, side3]
   end
 
   def kind
-    if a <= 0 || b <= 0 || c <= 0
+    if(negative? == true || valid? == false)
       raise TriangleError
-    elsif a == b && b == c && c == a
+    elsif(equilateral?)
       :equilateral
-    elsif a == b || b == c || a == c
-      :isosceles
-    else
+    elsif(scalene?)
       :scalene
+    elsif(isosceles?)
+      :isosceles
     end
   end
 
-  class TriangleError < StandardError
-    
+  def negative?
+    @sides.each do |length|
+      if(length <= 0)
+        return true
+      end
+    end
   end
-  
+
+  def equilateral?
+    (@side1 == @side2) && (@side1 == @side3)
+  end
+
+  def scalene?
+    (@side1 != @side2) && (@side1!= @side3) && (@side2 != @side3)
+  end
+
+  def isosceles?
+    (@side2 == @side3) || (@side1 == @side2) || (@side1 = @side3)
+  end
+
+  def valid?
+    (@side1 + @side2 > @side3) && (@side2 + @side3 > @side1) && (@side1 + @side3 > @side2)
+  end
+
 end
 
+class TriangleError < StandardError
+
+end
